@@ -96,7 +96,7 @@ def rand_word(hint):
     sol = ""
     if hint == "f":
         sol = fruit_words[randint(0, len(fruit_words) - 1)]
-    elif hint == 'w':
+    elif hint == 'a':
         sol = animal_words[randint(0, len(animal_words) - 1)]
     elif hint == "c":
         sol = country_words[randint(0, len(country_words) - 1)]
@@ -105,14 +105,12 @@ def rand_word(hint):
 
 def hint_conversion(hint):
     if hint == "a":
-        hint = "an animal"
+        return "an animal"
 
     if hint == "f":
-        hint == "a fruit"
+        return "a fruit"
 
     if hint == "c":
-        hint = "a country"
-
-    raise ValueError()
+        return "a country"
     
-    return hint
+    raise ValueError()

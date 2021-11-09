@@ -9,7 +9,10 @@ from hangman_functions import encode, decode, answer_test, hangman_draw, guess_s
 def main():
     game_style = input("Single or Multiplayer (s/m)?\n")
 
-    if game_style == "m":
+    while game_style.lower() not in "sm":
+        game_style = input("Single or Multiplayer (s/m)?\n")
+
+    if game_style.lower() == "m":
         print("----------------")
         print("PLAYER ONE TURN")
         print("----------------")
@@ -19,15 +22,27 @@ def main():
         solution = solution.upper()
 
         os.system('clear')
-    elif game_style == "s":
-        hint = input("Do you want to guess fruits, countries or animals(a/c/f)?\n")
-        solution = rand_word(hint)
-        solution = solution.upper()
-        hint = hint_conversion(hint)
 
-    print("----------------")
-    print("TIME TO GUESS!!!")
-    print("----------------")
+        print("----------------")
+        print("PLAYER TWO TURN")
+        print("----------------")
+
+
+    elif game_style.lower() == "s":
+        hint = input("Do you want to guess fruits, countries or animals(a/c/f)?\n")
+        while hint.lower() not in "acf":
+            hint = input("Do you want to guess fruits, countries or animals(a/c/f)?\n")
+        
+        solution = rand_word(hint.lower())
+        solution = solution.upper()
+        hint = hint_conversion(hint.lower())
+        
+        os.system('clear')
+
+        print("----------------")
+        print("TIME TO GUESS!!!")
+        print("----------------")
+    
 
     print("Your hint is: {}".format(hint))
     past_guess = []
@@ -74,9 +89,13 @@ def main():
             print(Fore.RED + display)
             print(Fore.GREEN + "THE SOLUTION IS: {}\n".format(solution) + Style.RESET_ALL)
 
-            print(Fore.RED + "Sorry, you're not very good at this game.\nAnd, you've been hung!!")
+            print(Fore.RED + "Sorry P2, you're not very good at this game.\nAnd, you've been hung!!")
+            print(hangman_draw(count))
             
-            art.tprint("YOU LOSE!!")
+            if game_style.lower() == "m":
+                art.tprint("PLAYER  ONE  WINS!!")
+            else:
+                art.tprint('YOU  LOSE!!')
             
 
         if display == solution:
@@ -85,7 +104,11 @@ def main():
             print(Fore.GREEN)
             print(hangman_draw(count) + "\n")
             print(display)
-            art.tprint("YOU WIN!!")
+
+            if game_style.lower() == "m":
+                art.tprint("PLAYER  TWO  WINS!!")
+            else:
+                art.tprint('YOU  WIN!!')
             status = 'n'
 
         past_guess = guess_store(answer, past_guess)
