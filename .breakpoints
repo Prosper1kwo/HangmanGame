@@ -7,6 +7,14 @@
         "version": 3841,
         "index": 238
       }
+    ],
+    "hangman_functions_tests.py": [
+      {
+        "id": "3f7089f3-1764-4c2f-81b9-9908d28499bd",
+        "line": 9,
+        "version": 177,
+        "index": 240
+      }
     ]
   }
 }

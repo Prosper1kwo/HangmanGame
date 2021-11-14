@@ -99,10 +99,9 @@ def main():
             
 
         if display == solution:
-            
             os.system('clear')
-            print(Fore.GREEN)
-            print(hangman_draw(count) + "\n")
+
+            print(Fore.GREEN + hangman_draw(count) + "\n")
             print(display)
 
             if game_style.lower() == "m":
