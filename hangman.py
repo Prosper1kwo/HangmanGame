@@ -1,12 +1,20 @@
+
 '''
 This module is where the functions will be implemented in cohesive lines of code
 '''
 import os
 import art
 from colorama import Fore, Style
-from hangman_functions import encode, decode, answer_test, hangman_draw, guess_store, guess_test, rand_word, hint_conversion
+from conversion_functions import decode, encode, hint_conversion 
+from store_functions import rand_word, guess_store
+from test_functions import hangman_draw, answer_test, guess_test
+from replit import audio
 
 def main():
+    audio.play_file('title_audio.wav')
+    
+    art.tprint("HANGMAN" , font="block" , chr_ignore=True) 
+    
     game_style = input("Single or Multiplayer (s/m)?\n")
 
     while game_style.lower() not in "sm":
@@ -64,8 +72,12 @@ def main():
         
         if answer_test(answer, solution) == False:
             os.system('clear')
+
             guess_test(answer, past_guess)
             count += 1
+
+            if count < 6:
+                audio.play_file('whistle_error.wav')
             
             print(Fore.RED + "WRONG GUESS")
             print(hangman_draw(count) + Style.RESET_ALL + "\n")
@@ -74,6 +86,10 @@ def main():
             
         elif answer_test(answer, solution) == True:
             os.system('clear')
+
+            if display != solution:
+                audio.play_file('correct_answer.wav')
+
             if guess_test(answer, past_guess) == True:
                 pass
             
@@ -85,7 +101,9 @@ def main():
         
         if count == 6:
             os.system('clear')
-            
+
+            audio.play_file('game_over.wav')
+
             print(Fore.RED + display)
             print(Fore.GREEN + "THE SOLUTION IS: {}\n".format(solution) + Style.RESET_ALL)
 
@@ -100,6 +118,8 @@ def main():
 
         if display == solution:
             os.system('clear')
+
+            audio.play_file('game_complete.wav')
 
             print(Fore.GREEN + hangman_draw(count) + "\n")
             print(display)

@@ -6,8 +6,11 @@ Hangman is an old school favorite, a word game where the goal is simply to find 
 Our version of this is the multiplayer, between two people, with Player 1 acting as the hint and solution giver, and Player 2 guessing the word with the hint given, letter by letter.
 
 ### CHANGELOG (07/11/2021):
-1. Phrases can now be used in multiplayer
-2. NEW MODE: singleplayer has finally been added with a plethora of new words
+1. Phrases can now be used in multiplayer.
+2. NEW MODE: singleplayer has finally been added with a plethora of new words.
+
+### CHANGELOG (14/11/2021):
+1. Sound has finally been added for the title screen, Game over (win and lose) as well as wrong answer.
 
 
 
@@ -18,7 +21,8 @@ To begin game:
 
 1. Type python hangman.py in the shell.
 2. Ensure Colorama and Art are installed or the code will not run.
-3. type s for single player and m for multiplayer when prompted.
+3. type 's' for single player and 'm' for multiplayer when prompted.
+4. For optimal view, ensure your console takes up more than 70% of the screen
 
 ### Rules: 
 ###

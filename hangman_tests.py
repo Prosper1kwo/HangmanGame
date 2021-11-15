@@ -1,15 +1,17 @@
 '''
-This module tests the functions defined in hangman_functions.py
+This module tests the functions implemented in the game
 '''
 
-from hangman_functions import hangman_draw, encode, decode, guess_test, guess_store, answer_test, hint_conversion
+from conversion_functions import decode, encode, hint_conversion 
+from store_functions import guess_store
+from test_functions import hangman_draw, answer_test, guess_test
 from hangman_pics import hang_image
 import unittest
 
 
 class TestImageTools(unittest.TestCase):
     """
-    Class for testing ImageTools.
+    Class for testing HangmanFunctions.
     """
     def test_hangman_draw(self):
         self.assertEqual(hangman_draw(4), hang_image[4])
